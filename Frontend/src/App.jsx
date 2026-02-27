@@ -3,7 +3,7 @@ import axios from "axios";
 const App = () => {
   const [notes, setNotes] = useState([]);
   function fetchNotes() {
-    axios.get("http://localhost:4000/api/notes").then((res) => {
+    axios.get("https://deployment-2-0c7t.onrender.com/api/notes").then((res) => {
       setNotes(res.data.notes);
     });
   }
@@ -15,7 +15,7 @@ const App = () => {
     e.preventDefault();
     const { title, desc } = e.target.elements;
     axios
-      .post("http://localhost:4000/api/notes", {
+      .post("https://deployment-2-0c7t.onrender.com/api/notes", {
         title: title.value,
         desc: desc.value,
       })
@@ -27,7 +27,7 @@ const App = () => {
   function deleteNote(noteId) {
     console.log(noteId);
     axios
-      .delete("http://localhost:4000/api/notes/" + noteId)
+      .delete("https://deployment-2-0c7t.onrender.com/api/notes/" + noteId)
       .then((req, res) => {
         fetchNotes();
       });
