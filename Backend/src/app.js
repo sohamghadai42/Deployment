@@ -5,7 +5,8 @@ const path = require('path')
 const cors = require('cors')
 app.use(express.json())
 app.use(cors())
-app.use(express.static("./public"))
+const publicPath = path.join(__dirname, '..', 'public')
+app.use(express.static(publicPath))
 
 app.post('/api/notes', async (req, res)=>{
     const {title, desc} = req.body
@@ -39,7 +40,7 @@ app.patch("/api/notes/:id", async (req, res)=>{
         message: "note updated successfully"
     })
 })
-app.use('*name', (req, res)=>{
-    res.sendFile(path.join(__dirname, "..", './public/index.html'))
+app.get('*', (req, res) => {
+    res.sendFile(path.join(publicPath, 'index.html'))
 })
 module.exports = app
