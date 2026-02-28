@@ -40,7 +40,7 @@ app.patch("/api/notes/:id", async (req, res)=>{
         message: "note updated successfully"
     })
 })
-app.get('*', (req, res) => {
+app.get('*name', (req, res) => {
     res.sendFile(path.join(publicPath, 'index.html'))
 })
 module.exports = app
